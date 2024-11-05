@@ -7,7 +7,7 @@ sherlockode_sylius_plugin_faq:
         _controller: Sherlockode\SyliusFAQPlugin\Controller\FaqController::indexAction
 
 sherlockode_sylius_faq_admin_question_delete:
-    path: /admin/faq/questions/{id}
+    path: /%sylius_admin.path_name%/faq/questions/{id}
     methods: [ DELETE ]
     defaults:
         _controller: sherlockode_sylius_faq.controller.question::deleteAction
@@ -16,7 +16,7 @@ sherlockode_sylius_faq_admin_question_delete:
                 route: sherlockode_sylius_faq_admin_index
     
 sherlockode_sylius_faq_admin_category_delete:
-    path: /admin/faq/category/{id}
+    path: /%sylius_admin.path_name%/faq/category/{id}
     methods: [ DELETE ]
     defaults:
         _controller: sherlockode_sylius_faq.controller.category::deleteAction
@@ -25,13 +25,13 @@ sherlockode_sylius_faq_admin_category_delete:
                 route: sherlockode_sylius_faq_admin_index
                 
 sherlockode_sylius_faq_admin_index:
-    path: /admin/faq
+    path: /%sylius_admin.path_name%/faq
     methods: [GET]
     defaults:
         _controller: Sherlockode\SyliusFAQPlugin\Controller\Admin\ResourceController::indexAction
 
 sherlockode_sylius_faq_resource_order:
-    path: /admin/faq/resources
+    path: /%sylius_admin.path_name%/faq/resources
     methods: [ POST ]
     defaults:
         _controller: Sherlockode\SyliusFAQPlugin\Controller\Admin\ResourceController::updateResourcesOrderAction
