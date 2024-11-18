@@ -2,11 +2,10 @@
 
 namespace Sherlockode\SyliusFAQPlugin\Form\Type;
 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sherlockode\SyliusFAQPlugin\Entity\QuestionTranslation;
-use Sherlockode\SyliusFAQPlugin\Validator\Constraints\Length as CKeditorLength;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -22,14 +21,14 @@ class QuestionTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $questionConstraints = [new Length(min: 2, max: 255, groups: ['sylius'])];
-        $answerConstraints = [new CKEditorLength(min: 2, groups: ['sylius'])];
+        $answerConstraints = [new Length(min: 2, groups: ['sylius'])];
 
         $builder
             ->add('question', TextType::class, [
                 'label' => 'sherlockode_sylius_faq.ui.question.question',
                 'constraints' => $questionConstraints,
             ])
-            ->add('answer', CKEditorType::class, [
+            ->add('answer', TextareaType::class, [
                 'label' => 'sherlockode_sylius_faq.ui.question.answer',
                 'constraints' => $answerConstraints,
             ])
@@ -46,7 +45,7 @@ class QuestionTranslationType extends AbstractResourceType
                             'label' => 'sherlockode_sylius_faq.ui.question.question',
                             'constraints' => array_merge([new NotBlank(groups: ['sylius'])], $questionConstraints)
                         ])
-                        ->add('answer', CKEditorType::class, [
+                        ->add('answer', TextareaType::class, [
                             'label' => 'sherlockode_sylius_faq.ui.question.answer',
                             'constraints' => array_merge([new NotBlank(groups: ['sylius'])], $answerConstraints)
                         ])

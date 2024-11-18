@@ -10,8 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "sylius/sylius": "~1.13.0",
-        "friendsofsymfony/ckeditor-bundle": "^2.4"
+        "sylius/sylius": "~1.13.0"
     },
     "config": {
         "sort-packages": true
